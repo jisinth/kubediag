@@ -27,7 +27,10 @@ func NewCommand() *cobra.Command {
 
 			w := cmd.OutOrStdout()
 			if outPath != "" {
-				f, err := os.Create(outPath)
+				// outPath comes from the --out flag the operator running this
+				// CLI supplies for their own machine, not from untrusted
+				// remote input.
+				f, err := os.Create(outPath) // #nosec G304
 				if err != nil {
 					return err
 				}
