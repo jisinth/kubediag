@@ -4,22 +4,22 @@ import "testing"
 
 func TestNewReportScore(t *testing.T) {
 	tests := []struct {
-		name      string
-		issues    []Issue
-		wantScore int
+		name       string
+		issues     []Issue
+		wantScore  int
 		wantHealth string
 	}{
 		{name: "no issues", issues: nil, wantScore: 100, wantHealth: "Excellent"},
 		{
-			name:      "one warning",
-			issues:    []Issue{{Severity: SeverityWarning}},
-			wantScore: 95,
+			name:       "one warning",
+			issues:     []Issue{{Severity: SeverityWarning}},
+			wantScore:  95,
 			wantHealth: "Excellent",
 		},
 		{
-			name:      "one critical",
-			issues:    []Issue{{Severity: SeverityCritical}},
-			wantScore: 85,
+			name:       "one critical",
+			issues:     []Issue{{Severity: SeverityCritical}},
+			wantScore:  85,
 			wantHealth: "Good",
 		},
 		{
@@ -29,7 +29,7 @@ func TestNewReportScore(t *testing.T) {
 				{Severity: SeverityCritical}, {Severity: SeverityCritical}, {Severity: SeverityCritical},
 				{Severity: SeverityCritical},
 			},
-			wantScore: 0,
+			wantScore:  0,
 			wantHealth: "Critical",
 		},
 	}
